@@ -11,6 +11,9 @@ This runs the IBM Cloud CLI.
 ```
 
 ### update credentials 
+https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui
+
+My IBM Cloud API keys
 
 ```
 vi env.list
@@ -19,6 +22,6 @@ vi env.list
 ### usage
 
 ```
-./runit.sh 
+./runit.sh --help
 ```
 
