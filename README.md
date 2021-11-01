@@ -22,6 +22,8 @@ vi env.list
 ### usage
 
 ```
-./runit.sh --help
+./runit.sh login (to test you get a 'OK' and that proves your account API key is working)
+
+./runit.sh sl user list
 ```
 
