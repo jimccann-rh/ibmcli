@@ -27,3 +27,6 @@ vi env.list
 ./runit.sh sl user list
 ```
 
+Set INTERATCIBMCLI=false in evn.list to true for a interactive sesssion
+./runit.sh 
+```
