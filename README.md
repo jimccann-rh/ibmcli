@@ -28,5 +28,8 @@ vi env.list
 ```
 
 Set INTERATCIBMCLI=false in evn.list to true for a interactive sesssion
+```
 ./runit.sh 
 ```
+
+During session: "ibmcloud login" then "ibmcloud sl user list" when done type 'exit'
