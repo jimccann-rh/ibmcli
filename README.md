@@ -1,5 +1,5 @@
 # ibmcli
-Run ibmcli in a container
+Run ibmclould in a container
 
 This runs the IBM Cloud CLI.
 
