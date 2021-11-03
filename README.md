@@ -27,6 +27,8 @@ vi env.list
 ./runit.sh login (to test you get a 'OK' and that proves your account API key is working)
 
 ./runit.sh sl user list
+
+./runit.sh sl hardware list --column id --column hostname --column ipmi_ip --column datacenter --column domain --column status --column tags --column private_ip --column public_ip --output json
 ```
 
 Set INTERATCIBMCLI=false in evn.list to true for a interactive sesssion
