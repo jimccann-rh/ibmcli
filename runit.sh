@@ -1,11 +1,26 @@
-#!/bin/bash
+!/bin/bash
 
 SETPODSSHKEYS=$HOME/.ssh:/run/localsshkeys
 
 if grep -qF "$SETPODSSHKEYS" /etc/containers/mounts.conf ; then
-   echo "Local SSH key path for podman is set. Look under /run/localsshkeys/"
+   echo "SSH key path for podman is set look under /run"
 else
    echo $SETPODSSHKEYS | sudo tee -a /etc/containers/mounts.conf /dev/null
 fi
 
-podman run --env-file env.list --rm --name IBMCLI -it ibmcli $@
+PODMANAME=IBMCLI
+num=0
+
+STATUS=$(podman ps -aqf "name=^$PODMANAME$")
+
+until [[ $STATUS = "" ]]
+do
+     echo "already running $PODMANAME"
+     num=$(($num+1))
+     PODMANAME=$PODMANAME$num
+     STATUS=$(podman ps -aqf "name=^$PODMANAME$")
+done
+echo "create container $PODMANAME"
+podman run --env-file env.list --rm --name $PODMANAME -it ibmcli $@
+
+
