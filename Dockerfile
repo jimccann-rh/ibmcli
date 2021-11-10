@@ -15,7 +15,11 @@ RUN curl $URLIMAGE && \
     rm out.tar.gz && \
     ibmcloud cf install && \
     ibmcloud plugin install vpc-infrastructure && \
-    rm -rf /root/.bluemix/tmp/ 
+    ibmcloud plugin install cloud-dns-services && \
+    rm -rf /root/.bluemix/tmp/
+
+RUN dnf install jq -y
+
 
 #https://www.ibm.com/cloud/cli
 
