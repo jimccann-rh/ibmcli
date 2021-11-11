@@ -1,5 +1,8 @@
 !/bin/bash
 
+volumemount=ibmcloudoutput
+mkdir -p $(pwd)/$volumemount
+
 SETPODSSHKEYS=$HOME/.ssh:/run/localsshkeys
 
 if grep -qF "$SETPODSSHKEYS" /etc/containers/mounts.conf ; then
@@ -21,6 +24,5 @@ do
      STATUS=$(podman ps -aqf "name=^$PODMANAME$")
 done
 echo "create container $PODMANAME"
-podman run --env-file env.list --rm --name $PODMANAME -it ibmcli $@
-
+podman run --env-file env.list --rm --name $PODMANAME -it --volume $(pwd)/$volumemount:/$volumemount:Z ibmcli $@
 
