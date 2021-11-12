@@ -3,7 +3,7 @@ FROM $IMAGELOCATION
 
 #https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases/
 
-ENV IBM_CLOUD_CLI=2.1.1
+ENV IBM_CLOUD_CLI=2.2.0
 
 ENV URLIMAGE="https://download.clis.cloud.ibm.com/ibm-cloud-cli/${IBM_CLOUD_CLI}/IBM_Cloud_CLI_${IBM_CLOUD_CLI}_amd64.tar.gz -o out.tar.gz"
 
