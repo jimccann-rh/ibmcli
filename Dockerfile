@@ -18,7 +18,7 @@ RUN curl $URLIMAGE && \
     ibmcloud plugin install cloud-dns-services && \
     rm -rf /root/.bluemix/tmp/
 
-RUN dnf install jq -y
+RUN dnf install jq openssh-clients -y
 
 
 #https://www.ibm.com/cloud/cli
