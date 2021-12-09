@@ -22,7 +22,7 @@ RUN curl $URLIMAGE2 && \
     ibmcloud plugin install cloud-object-storage && \
     rm -rf /root/.bluemix/tmp/
 
-RUN dnf install jq openssh-clients iputils -y
+RUN dnf install jq openssh-clients iputils git openssl findutils -y
 
 
 #https://www.ibm.com/cloud/cli
