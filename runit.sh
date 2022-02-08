@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 volumemount=ibmcloudoutput
 mkdir -p $(pwd)/$volumemount
@@ -14,15 +14,15 @@ fi
 PODMANAME=IBMCLI
 num=0
 
-STATUS=$(podman ps -aqf "name=^$PODMANAME$")
+STATUS=$(podman ps -aqf "name=^$PODMANAME$") 
 
 until [[ $STATUS = "" ]]
-do
+do     
      echo "already running $PODMANAME"
      num=$(($num+1))
      PODMANAME=$PODMANAME$num
-     STATUS=$(podman ps -aqf "name=^$PODMANAME$")
+     STATUS=$(podman ps -aqf "name=^$PODMANAME$") 
 done
 echo "create container $PODMANAME"
-podman run --env-file env.list --rm --name $PODMANAME -it --volume $(pwd)/$volumemount:/$volumemount:Z ibmcli $@
+podman run --env-file env.list --rm --name $PODMANAME -it --volume $(pwd)/$volumemount:/$volumemount:Z ibmcli $@ 
 

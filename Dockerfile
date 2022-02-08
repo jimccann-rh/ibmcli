@@ -1,18 +1,19 @@
 ARG IMAGELOCATION='quay.io/fedora/fedora:34-x86_64'
+#ARG IMAGELOCATION='quay.io/fedora/fedora:35-x86_64'
 FROM $IMAGELOCATION
 
 #https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases/
 
-ENV IBM_CLOUD_CLI=2.3.0
+ENV IBM_CLOUD_CLI=2.4.0
+#ENV IBM_CLOUD_CLI=2.3.0
+#ENV IBM_CLOUD_CLI=2.1.1
+
 
 ENV URLIMAGE="https://download.clis.cloud.ibm.com/ibm-cloud-cli/${IBM_CLOUD_CLI}/IBM_Cloud_CLI_${IBM_CLOUD_CLI}_amd64.tar.gz -o out.tar.gz"
-ENV URLIMAGE2="https://dl.min.io/client/mc/release/linux-amd64/mc"
-
 
 COPY entrypoint.sh /
 
-RUN curl $URLIMAGE2 && \
-    curl $URLIMAGE && \
+RUN curl $URLIMAGE && \
     tar xvzf out.tar.gz && \
     ./Bluemix_CLI/install && \
     rm out.tar.gz && \
@@ -20,10 +21,9 @@ RUN curl $URLIMAGE2 && \
     ibmcloud plugin install vpc-infrastructure && \
     ibmcloud plugin install cloud-dns-services && \
     ibmcloud plugin install cloud-object-storage && \
-    rm -rf /root/.bluemix/tmp/
+    rm -rf /root/.bluemix/tmp/ 
 
-RUN dnf install jq openssh-clients iputils git openssl findutils -y
-
+RUN dnf install jq openssh-clients iputils  git openssl findutils -y 
 
 #https://www.ibm.com/cloud/cli
 
